@@ -9,6 +9,7 @@ ExampleSubsystem* CommandBase::examplesubsystem = NULL;
 OI* CommandBase::oi = NULL;
 Chassis* CommandBase::chassis = NULL;
 Collector* CommandBase::collector = NULL;
+Lifter* CommandBase::lifter = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)

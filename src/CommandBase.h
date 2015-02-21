@@ -6,6 +6,7 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/chassis.h"
 #include "Subsystems/Collector.h"
+#include "Subsystems/lifter.h"
 #include "OI.h"
 #include "WPILib.h"
 
@@ -24,6 +25,7 @@ public:
 	static ExampleSubsystem *examplesubsystem;
 	static Chassis *chassis;
 	static Collector *collector;
+	static Lifter *lifter;
 	static OI *oi;
 };
 

@@ -15,14 +15,21 @@
 class Chassis: public Subsystem
 {
 
-//	enum Drive{RightFront=0,RightRear=1,LeftFront=2,LeftRear=3};
-//	Talon Motor[4];
 
-	Talon *Rightfront;
-	Talon *Rightrear;
-	Talon *Leftfront;
-	Talon *Leftrear;
+	Talon Rightfront;
+	Talon Rightrear;
+	Talon Leftfront;
+	Talon Leftrear;
+	float x;
+	float y;
+	float z;
 	bool DriveToggle;
+	float rawpower;
+	double power;
+	float FR;
+	float RR;
+	float FL;
+	float BL;
 
 
 private:

@@ -17,11 +17,60 @@ class Collector : public Subsystem
 
 //		enum Collect{Rightroller=0,Leftroller=1};
 //		Relay relay[2];
-	    Relay *Rightroller;
-	    Relay *Leftroller;
-	    Talon *
+	    Relay Rightroller;
+	    Relay Leftroller;
+	    Talon arms;
 
-		int	RUNNING = 0;
+
+	    int start;
+
+	    double potval;
+	    AnalogInput ArmAngleSensor;
+
+///////////////////////////
+		int	RUNNING;
+
+//////////////////////arms
+		int fullyopen;
+		int fullyclosed;
+		int partiallyopen;
+		int centered;
+		int partalyclsoed;
+		int buttonpress;
+
+
+		double unmapedpotposition;
+		double potpositionoffset;
+		double mappedpotposition;
+		double potposition;
+		double maxposition;///////////voltage we mesure form the open and close(difference)
+		double armspower;
+
+
+		//////////////////buttons on joystick and pad
+		bool partiallyopenbutton;
+		bool centeredbutton;
+		bool partiallyclosedbutton;
+
+		bool outmovebutton;
+		bool inmovebutton;
+
+		bool outerbutton;
+		bool middlebutton;
+		bool innerbutton;
+		bool runwheels;
+
+		bool reversewheel;
+		bool clockwise;
+		bool counterclockwise;
+		bool off;
+		double rawpotposition;
+		double potpositionoffest;
+
+		double partalyopenlocation;
+		double centeredlocation;
+		double partalyclosedlocation;
+
 
 private:
 	// It's desirable that everything possible under private except

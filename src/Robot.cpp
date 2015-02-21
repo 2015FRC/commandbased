@@ -9,8 +9,10 @@
 Robot::Robot():
 stick(0),
 padone(1),
-//_collector(),
-chassis()
+chassis(),
+_collector(),
+lifter()
+
 {
 
 	CommandBase::init();
@@ -50,7 +52,7 @@ void Robot::TeleopPeriodic()
 
 	Scheduler::GetInstance()->Run();
 	chassis.update(&stick,&padone);
-
+	_collector.collect(&stick,&padone);
 	//this->_collector.collect(&stick,&padone);
 
 

@@ -20,7 +20,8 @@ private:
 	LiveWindow *lw;
 	Joystick stick;
 	Chassis chassis;
-	//Collector _collector;
+	Collector _collector;
+	Lifter lifter;
 	Joystick padone;
 
 public:
