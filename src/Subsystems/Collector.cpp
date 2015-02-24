@@ -43,8 +43,8 @@ Collector::Collector():
 
 void Collector::collect(Joystick* stick,Joystick* padone)
 {
-	Relay::Value forward = Relay::Value::kForward;
-	Relay::Value reverse = Relay::Value::kReverse;
+	Relay::Value forward = (Relay::Value::kForward);
+	Relay::Value reverse = (Relay::Value::kReverse);
 
 	runwheels = stick->GetRawButton(5) ;
 	reversewheel = stick->GetRawButton(3);
@@ -52,12 +52,14 @@ void Collector::collect(Joystick* stick,Joystick* padone)
 	counterclockwise = stick->GetRawButton(4);
 	off = stick->GetRawButton(2);
 
+
+
  if(runwheels == 1){
 	 RUNNING = 5;
 	 buttonpress += 1;
  }
 
- if(reversewheel==1){
+ if(reversewheel == 1){
 	 RUNNING = 3;
 	 buttonpress += 1;
  }
@@ -66,7 +68,7 @@ void Collector::collect(Joystick* stick,Joystick* padone)
 	 buttonpress += 1;
  }
 
- if(counterclockwise==1){
+ if(counterclockwise == 1){
 	 RUNNING = 4;
 	 buttonpress += 1;
  }
@@ -75,9 +77,9 @@ void Collector::collect(Joystick* stick,Joystick* padone)
 	 buttonpress += 1;
  }
 
-if(buttonpress > 1){
-	RUNNING = 0;
-}
+//if(buttonpress > 1){
+//	RUNNING = 0;
+//}
 
 switch(RUNNING){
  case 3 :
@@ -105,6 +107,8 @@ switch(RUNNING){
 	 Rightroller.Set(Relay::Value::kOff);
 	 Leftroller.Set(Relay::Value::kOff);
 	 }
+buttonpress = 0;
+//SmartDashboard::GetData(RUNNING);
 
 
 
