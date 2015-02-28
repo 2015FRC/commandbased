@@ -10,8 +10,8 @@
 
 Lifter::Lifter():
 		Subsystem("Lifter"),
-	hookone(5),
-	hooktwo(6),
+	hookbottome(5),
+	hookmiddle(6),
 	hookgarbage(7)
 //homebottom(0),
 //homemiddle(1),
@@ -43,90 +43,100 @@ void Lifter::lift(Joystick* stick,Joystick* padone)
 
 
 
-if(liftbottom == 1 && topmiddle == 0){
-	hooktwo.Set(hookspeed);
-}else{
-	hooktwo.Set(0);	}
-if(lowerbottom == 1 && homebottom == 0){
-		hookone.Set(-hookspeed);
+if(liftbottom == 1 ){
+	hookmiddle.Set(0);
+	hookgarbage.Set(0);
+	if(topbottom == 0){
+		hookbottome.Set(hookspeed);
 	}else{
-		hookone.Set(0);}
-
-
-if(liftmiddle == 1 && topmiddle == 0){
-		hooktwo.Set(hookspeed);
+		hookbottome.Set(0);
+	}
+} else if(lowerbottom == 1){
+	hookmiddle.Set(0);
+	hookgarbage.Set(0);
+	if ( homebottom == 0){
+		hookbottome.Set(-hookspeed);
 	}else{
-		hooktwo.Set(0);	}
-if(lowermiddle == 1 && homemiddle == 0){
-		hooktwo.Set(-hookspeed);
+		hookbottome.Set(0);
+	}
+} else if(liftmiddle){
+		hookbottome.Set(0);
+		hookgarbage.Set(0);
+	if(topmiddle == 0){
+		hookmiddle.Set(hookspeed);
 	}else{
-		hooktwo.Set(0);}
-
-
-if(liftgarbage == 1 && topgarbage == 0){
+		hookmiddle.Set(0);
+	}
+}else if(lowermiddle == 1){
+		hookbottome.Set(0);
+		hookgarbage.Set(0);
+	if(homemiddle == 0){
+		hookmiddle.Set(-hookspeed);
+	}else{
+		hookmiddle.Set(0);
+	}
+}else if(liftgarbage == 1 ){
+		hookbottome.Set(0);
+		hookmiddle.Set(0);
+	if(topgarbage == 0){
 		hookgarbage.Set(hookspeed);
 	}else{
-		hookgarbage.Set(0);	}
-if(lowerbottom == 1 && homegarbage == 0){
+		hookgarbage.Set(0);
+	}
+}else if(lowergarbage == 1 ){
+		hookbottome.Set(0.0);
+		hookmiddle.Set(0.0);
+	if(homegarbage == 0){
 		hookgarbage.Set(-hookspeed);
 	}else{
-		hookgarbage.Set(0);}
-
-
-
-if(liftall == 1){
-			if(topgarbage == 0){
-				hookgarbage.Set(hookspeed);
-			}else{
-				hookgarbage.Set(0);
-			};
-
-			if(topmiddle == 0){
-				hooktwo.Set(hookspeed);
-			}else{
-				hooktwo.Set(0);
-			}
-
-			if(topmiddle == 0){
-				hooktwo.Set(hookspeed);
-			}else{
-				hooktwo.Set(0);
-			}
-
+		hookgarbage.Set(0.0);
+	}
+}else if(liftall == 1){
+	if(topgarbage == 0){
+		hookgarbage.Set(hookspeed);
 	}else{
+		hookgarbage.Set(0.0);
+	};
+	if(topmiddle == 0){
+		hookmiddle.Set(hookspeed);
+	}else{
+		hookmiddle.Set(0.0);
+	}
+	if(topbottom == 0){
+		hookbottome.Set(hookspeed);
+	}else{
+		hookbottome.Set(0.0);
+	}
 
-		if(homegarbage == 0){
-			hookgarbage.Set(-hookspeed);
-		}else{
-			hookgarbage.Set(0);
-		};
+}else if(lowerall == 1){
+	if(homegarbage == 0){
+		hookgarbage.Set(-hookspeed);
+	}else{
+		hookgarbage.Set(0.0);
+	};
 
-		if(homemiddle == 0){
-			hooktwo.Set(-hookspeed);
-		}else{
-			hooktwo.Set(0);
-		}
+	if(homemiddle == 0){
+		hookmiddle.Set(-hookspeed);
+	}else{
+		hookmiddle.Set(0.0);
+	}
 
-		if(homemiddle == 0){
-			hooktwo.Set(-hookspeed);
-		}else{
-			hooktwo.Set(0);
-		}
+	if(homebottom == 0){
+		hookbottome.Set(-hookspeed);
+	}else{
+		hookbottome.Set(0.0);
+	}
 
+}else{
+	hookbottome.Set(0);
+	hookmiddle.Set(0);
+	hookgarbage.Set(0);
+}
 
-
-
-
-
+///////end of code loop
 
 }
 
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
-}
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
 
 
 

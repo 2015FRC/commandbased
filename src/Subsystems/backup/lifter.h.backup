@@ -1,0 +1,180 @@
+/*
+ * lifter.h
+ *
+ *  Created on: Feb 14, 2015
+ *      Author: ausin
+ */
+
+#ifndef SRC_SUBSYSTEMS_LIFTER_H_
+#define SRC_SUBSYSTEMS_LIFTER_H_
+#include "Commands/Subsystem.h"
+#include "WPILib.h"
+
+class Lifter: public Subsystem
+{
+DigitalInput *hall0;
+DigitalInput *hall1;
+DigitalInput *hall2;
+DigitalInput *hall3;
+DigitalInput *hall4;
+
+Talon *Hook0;
+Talon *Hook1;
+Talon *Hook2;
+Talon *Hook3;
+
+	int status;  //Status 1 indicates this tote is active and will be moved
+	int currentlocation;    //location of hook, values are 0-9 for the 0-9 hall effect sensors
+	int const raisedposition; //The location that the hook should be in when it is carrying a tote
+	int const startlocation;
+	int targetlocation;
+	int port; //The port that is connected to the motor
+	int loaded; //Loaded indicates whether the hook currently is carring a tote.
+
+	int activehall ;
+	int targethall;
+	const int bottomhall = 2;
+
+	int activetote;
+	int currenttote;
+	int changetote;
+
+private:
+	// It's desirable that everything possible under private except
+	// for methods that implement subsystem capabilities
+public:
+	Lifter();
+	void lift(Joystick* stick,Joystick* padone);
+};
+
+/*
+class Hook {
+	public:
+	int status;  //Status 1 indicates this tote is active and will be moved
+	int currentlocation;    //location of hook, values are 0-9 for the 0-9 hall effect sensors
+	int const raisedposition; //The location that the hook should be in when it is carrying a tote
+	int const startlocation;
+	int targetlocation;
+	int port; //The port that is connected to the motor
+	int loaded; //Loaded indicates whether the hook currently is carring a tote.
+};
+
+
+Hook Hook2;
+Hook Hook1;
+Hook Hook0;  //Bottom Hook
+
+Hook2.status = 0;
+Hook2.location = 2;
+Hook2.targetlocation=2;
+Hook2.raisedposition=7;
+Hook2.startlocation=2;
+Hook2.loaded=0;
+
+Hook1.status = 0;
+Hook1.location = 1;
+Hook1.targetlocation=1;
+Hook1.raisedposition=6;
+Hook1.startlocation=1;
+Hook1.loaded=0;
+
+Hook0.status = 0;
+Hook0.location = 0;
+Hook0.targetlocation=0;
+Hook0.raisedposition=4;
+Hook0.startlocation=5;
+Hook0.loaded=0;
+
+
+
+class LiftSensor :
+	public:
+	int position;
+	double height;    //height of the sensor from the bottom-most sensor
+	int hook; //which hook is at this sensor
+	int filled; // 1 is there is a hook at this sensor, 0 if not
+	int status; // input from the sensor. 0 is no reading, 1 is reading a magnet
+}
+
+LiftSensor LiftSensor9; //Top Sensor for stopping garbage container
+LiftSensor LiftSensor8; //Lifted location of top tote (Hook3)
+LiftSensor LiftSensor7; //Lifted Location of Hook2
+LiftSensor LiftSensor6; //Lifted Location of Hook1
+LiftSensor LiftSensor5; //Starting Position of Garbage Container Hook (Hook 4)
+LiftSensor LiftSensor4; //Lifted Location of Hook 0
+LiftSensor LiftSensor3; //Starting Position of Hook3
+LiftSensor LiftSensor2; //Starting Position of Hook2
+LiftSensor LiftSensor1; //Starting Position of Hook1
+LiftSensor LiftSensor0; //Starting Position of Hook0, Bottom-most Hook
+
+LiftSensor9.position = 9;
+LiftSensor8.position = 8;
+LiftSensor7.position = 7;
+LiftSensor6.position = 6;
+LiftSensor5.position = 5;
+LiftSensor4.position = 4;
+LiftSensor3.position = 3;
+LiftSensor2.position = 2;
+LiftSensor1.position = 1;
+LiftSensor0.position = 0;
+
+LiftSensor9.filled = 0;
+LiftSensor8.filled = 0;
+LiftSensor7.filled = 0;
+LiftSensor6.filled = 0;
+LiftSensor5.filled = 1; //The garbage container starts here
+LiftSensor4.filled = 0;
+LiftSensor3.filled = 1; //The top tote starts here
+LiftSensor2.filled = 1;
+LiftSensor1.filled = 1;
+LiftSensor0.filled = 1;
+
+
+int Activehook = 4; //This indicates which hook is to be moved
+int ActiveHookLocation = Hook4.location; //This sets the location of the active hook
+int ActiveHookTarget = Hook4.targetlocation;
+double LowerTimeShort= 0.5;
+int RaisetimeShort=0.5;
+int LowerTargetFilled=0;
+int UpperTargetFilled=0;
+
+
+int HooksArray [5,7] ={
+	{Hook0.status, Hook0.location,Hook0.targetlocation,Hook0.raisedposition,Hook0.startlocation,Hook0.port,Hook1.loaded},
+	{Hook1.status, Hook1.location,Hook1.targetlocation,Hook1.raisedposition,Hook1.startlocation,Hook1.port,Hook1.loaded},
+	{Hook2.status, Hook2.location,Hook2.targetlocation,Hook2.raisedposition,Hook2.startlocation,Hook2.port,Hook1.loaded},
+	{Hook3.status, Hook3.location,Hook3.targetlocation,Hook3.raisedposition,Hook3.startlocation,Hook3.port,Hook1.loaded},
+	{Hook4.status, Hook4.location,Hook4.targetlocation,Hook4.raisedposition,Hook4.startlocation,Hook4.port,Hook1.loaded}
+};
+
+int SensorArray [10,5]={
+	{LiftSensor0.position, LiftSensor0.height,LiftSensor0.hook,LiftSensor0.filled,LiftSensor0.status},
+	{LiftSensor1.position, LiftSensor1.height,LiftSensor1.hook,LiftSensor1.filled,LiftSensor1.status},
+	{LiftSensor2.position, LiftSensor2.height,LiftSensor2.hook,LiftSensor2.filled,LiftSensor2.status},
+	{LiftSensor3.position, LiftSensor3.height,LiftSensor3.hook,LiftSensor3.filled,LiftSensor3.status},
+	{LiftSensor4.position, LiftSensor4.height,LiftSensor4.hook,LiftSensor4.filled,LiftSensor4.status},
+	{LiftSensor5.position, LiftSensor5.height,LiftSensor5.hook,LiftSensor5.filled,LiftSensor5.status},
+	{LiftSensor6.position, LiftSensor6.height,LiftSensor6.hook,LiftSensor6.filled,LiftSensor6.status},
+	{LiftSensor7.position, LiftSensor7.height,LiftSensor7.hook,LiftSensor7.filled,LiftSensor7.status},
+	{LiftSensor8.position, LiftSensor8.height,LiftSensor8.hook,LiftSensor8.filled,LiftSensor8.status},
+	{LiftSensor9.position, LiftSensor9.height,LiftSensor9.hook,LiftSensor9.filled,LiftSensor9.status}
+};
+
+int TargetArray[5,1]={   //These are the valid locations that totes/garbage cans should be lifted to
+	{Hook0.raisedposition},
+	{Hook1.raisedposition},
+	{Hook2.raisedposition},
+	{Hook3.raisedposition},
+	{Hook4.raisedposition}
+};
+
+timer1 = new Timer();
+double time=0;
+int LowerToteShortButton=0;
+int RaiseToteShortButton=0;
+
+
+
+*/
+#endif // SRC_SUBSYSTEMS_LIFTER_H_
+

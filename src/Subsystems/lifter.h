@@ -13,8 +13,8 @@
 class Lifter: public Subsystem
 {
 
-	Talon hookone;
-	Talon hooktwo;
+	Talon hookbottome;
+	Talon hookmiddle;
 	Talon hookgarbage;
 
 

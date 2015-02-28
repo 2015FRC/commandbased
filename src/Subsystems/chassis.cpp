@@ -39,7 +39,7 @@ void Chassis::InitDefaultCommand()
 	//SetDefaultCommand(new DriveCommand());
 }
 
-void Chassis::update(Joystick* stick,Joystick* padone)
+void Chassis::update(Joystick* stick,Joystick* padone,Joystick* secondstick)
 {/////////////reads joystick values
 	 x = stick->GetX();
 	 y = stick->GetY();
@@ -92,6 +92,10 @@ void Chassis::update(Joystick* stick,Joystick* padone)
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+//void chassis::autoupdate(){
+
+//}
 
 
 

@@ -14,16 +14,10 @@
 
 class Collector : public Subsystem
 {
-
-//		enum Collect{Rightroller=0,Leftroller=1};
-//		Relay relay[2];
 	    Relay Rightroller;
 	    Relay Leftroller;
 	    Talon arms;
-
-
 	    int start;
-
 	    double potval;
 	    AnalogInput ArmAngleSensor;
 
@@ -58,7 +52,7 @@ class Collector : public Subsystem
 		bool outerbutton;
 		bool middlebutton;
 		bool innerbutton;
-		bool runwheels;
+		int runwheels;
 
 		bool reversewheel;
 		bool clockwise;
@@ -78,7 +72,7 @@ private:
 public:
 	Collector();
 //	void InitDefaultCommand();
-	void collect(Joystick* stick,Joystick* padone);
+	void collect(Joystick* stick,Joystick* padone,Joystick* secondstick);
 };
 
 

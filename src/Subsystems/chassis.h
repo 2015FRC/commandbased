@@ -38,7 +38,8 @@ private:
 public:
 	Chassis();
 	void InitDefaultCommand();
-	void update(Joystick* stick,Joystick* padone);
+	void update(Joystick* stick,Joystick* padone, Joystick* secondstick);
+	void autoupdate(Joystick* padone);
 
 
 

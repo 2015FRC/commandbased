@@ -8,7 +8,8 @@
 
 Robot::Robot():
 stick(0),
-padone(1),
+secondstick(1),
+padone(2),
 chassis(),
 _collector(),
 lifter()
@@ -33,6 +34,7 @@ void Robot::AutonomousInit()
 
 void Robot::AutonomousPeriodic()
 {
+	chassis.autoupdate(&padone);
 	Scheduler::GetInstance()->Run();
 }
 
@@ -51,8 +53,8 @@ void Robot::TeleopPeriodic()
 
 
 	Scheduler::GetInstance()->Run();
-	chassis.update(&stick,&padone);
-	_collector.collect(&stick,&padone);
+	chassis.update(&stick,&padone,&secondstick);
+	_collector.collect(&stick,&padone,&secondstick);
 	//this->_collector.collect(&stick,&padone);
 
 
