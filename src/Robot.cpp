@@ -55,7 +55,8 @@ void Robot::TeleopPeriodic()
 	Scheduler::GetInstance()->Run();
 	chassis.update(&stick,&padone,&secondstick);
 	_collector.collect(&stick,&padone,&secondstick);
-	//this->_collector.collect(&stick,&padone);
+	lifter.lift(&stick,&padone,&secondstick);
+
 
 
 

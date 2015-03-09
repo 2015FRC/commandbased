@@ -14,27 +14,37 @@
 
 class Chassis: public Subsystem
 {
+	typedef enum{Initial,Movingforward,Stopmoving}Autostate;
 
-
+	PowerDistributionPanel pdp;
 	Talon Rightfront;
 	Talon Rightrear;
 	Talon Leftfront;
 	Talon Leftrear;
+	Timer autoTimer;
+	double passedtime;
+	Autostate autostate;
 	float x;
 	float y;
 	float z;
-	bool DriveToggle;
+	float xo;
+	float yo;
+	float zo;
 	float rawpower;
-	double power;
+	float power;
+	float rawpowero;
+	float powero;
 	float FR;
 	float RR;
 	float FL;
 	float BL;
-
+	double timestart;
+	bool override;
 
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
+	void setmotorsfromjoystick(float x,float y,float z,float power);
 public:
 	Chassis();
 	void InitDefaultCommand();

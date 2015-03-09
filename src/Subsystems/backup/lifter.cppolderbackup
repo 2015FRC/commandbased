@@ -1,0 +1,157 @@
+/*
+ * lifter.cpp
+ *
+ *  Created on: Feb 14, 2015
+ *      Author: ausin
+ */
+
+#include "lifter.h"
+#include "../RobotMap.h"
+
+Lifter::Lifter():
+		Subsystem("Lifter"),
+	hookbottome(5),
+	hookmiddle(6),
+	hookgarbage(7),
+	hookspeed(.75),
+//homebottom(0),
+//homemiddle(1),
+//topbottom(2),
+//homegarbage(3),
+//topmiddle(4),
+//topgarbage(5)
+liftbottom(0),
+lowerbottom(0),
+liftmiddle(0),
+lowermiddle(0),
+liftgarbage(0),
+lowergarbage(0),
+liftall(0),
+lowerall(0)
+
+{
+
+}
+
+void Lifter::lift(Joystick* stick,Joystick* padone,Joystick * secondstick)
+{
+//bool up = stick->GetRawButton(7);
+//bool down = stick->GetRawButton(8);
+//bool alldown = stick->GetRawButton(9);
+
+
+
+//	 liftbottom = padone->GetRawButton(1);
+//	 lowerbottom = padone ->GetRawButton(2);
+//	 liftmiddle = padone->GetRawButton(3);
+//	 lowermiddle = padone->GetRawButton(4);
+//	 liftgarbage = padone->GetRawButton(5);
+//	 lowergarbage = padone->GetRawButton(6);
+		liftbottom = stick->GetRawButton(8);
+		 lowerbottom = stick ->GetRawButton(7);
+		 liftmiddle = stick->GetRawButton(10);
+		 lowermiddle = stick->GetRawButton(9);
+		 liftgarbage = stick->GetRawButton(12);
+		 lowergarbage = stick->GetRawButton(11);
+	 liftall = secondstick->GetRawButton(12);
+	 lowerall = secondstick->GetRawButton(11);
+
+
+if(liftbottom == 1 ){
+	hookmiddle.Set(0);
+	hookgarbage.Set(0);
+	if(topbottom == 0){
+		hookbottome.Set(hookspeed);
+	}else{
+		hookbottome.Set(0);
+	}
+} else if(lowerbottom == 1){
+	hookmiddle.Set(0);
+	hookgarbage.Set(0);
+	if ( homebottom == 0){
+		hookbottome.Set(-hookspeed);
+	}else{
+		hookbottome.Set(0);
+	}
+}else if(liftmiddle == 1){
+		hookbottome.Set(0);
+		hookgarbage.Set(0);
+	if(topmiddle == 0){
+		hookmiddle.Set(hookspeed);
+	}else{
+		hookmiddle.Set(0);
+	}
+}else if(lowermiddle == 1){
+		hookbottome.Set(0);
+		hookgarbage.Set(0);
+	if(homemiddle == 0){
+		hookmiddle.Set(-hookspeed);
+	}else{
+		hookmiddle.Set(0);
+	}
+}else if(liftgarbage == 1 ){
+		hookbottome.Set(0);
+		hookmiddle.Set(0);
+	if(topgarbage == 0){
+		hookgarbage.Set(hookspeed);
+	}else{
+		hookgarbage.Set(0);
+	}
+}else if(lowergarbage == 1 ){
+		hookbottome.Set(0.0);
+		hookmiddle.Set(0.0);
+	if(homegarbage == 0){
+		hookgarbage.Set(-hookspeed);
+	}else{
+		hookgarbage.Set(0.0);
+	}
+}else if(liftall == 1){
+	if(topgarbage == 0){
+		hookgarbage.Set(hookspeed);
+	}else{
+		hookgarbage.Set(0.0);
+	};
+	if(topmiddle == 0){
+		hookmiddle.Set(hookspeed);
+	}else{
+		hookmiddle.Set(0.0);
+	}
+	if(topbottom == 0){
+		hookbottome.Set(hookspeed);
+	}else{
+		hookbottome.Set(0.0);
+	}
+
+}else if(lowerall == 1){
+	if(homegarbage == 0){
+		hookgarbage.Set(-hookspeed);
+	}else{
+		hookgarbage.Set(0.0);
+	};
+
+	if(homemiddle == 0){
+		hookmiddle.Set(-hookspeed);
+	}else{
+		hookmiddle.Set(0.0);
+	}
+
+	if(homebottom == 0){
+		hookbottome.Set(-hookspeed);
+	}else{
+		hookbottome.Set(0.0);
+	}
+
+}else{
+	hookbottome.Set(0);
+	hookmiddle.Set(0);
+	hookgarbage.Set(0);
+}
+
+///////end of code loop
+
+}
+
+
+
+
+

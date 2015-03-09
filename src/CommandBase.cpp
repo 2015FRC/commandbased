@@ -3,6 +3,7 @@
 #include "Commands/Scheduler.h"
 #include "Subsystems/Collector.h"
 #include "Subsystems/chassis.h"
+#include "Subsystems/lifter.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
@@ -30,6 +31,7 @@ void CommandBase::init()
 	examplesubsystem = new ExampleSubsystem();
 	chassis = new Chassis();
 	collector = new Collector();
+	lifter = new Lifter();
 
 	oi = new OI();
 }

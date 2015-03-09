@@ -12,20 +12,21 @@
 
 class Lifter: public Subsystem
 {
-
+	int allbuttons;
 	Talon hookbottome;
 	Talon hookmiddle;
 	Talon hookgarbage;
 
 
-	double hookspeed;
+	float hookspeed;
 
-	bool homebottom = new DigitalInput(0);
-	bool homemiddle = new DigitalInput(1);
-	bool topbottom = new DigitalInput(2);
-	bool homegarbage = new DigitalInput(3);
-	bool topmiddle = new DigitalInput(4);
-	bool topgarbage = new DigitalInput(5);
+
+	bool homebottom = new DigitalInput(20);
+	bool homemiddle = new DigitalInput(21);
+	bool topbottom = new DigitalInput(22);
+	bool homegarbage = new DigitalInput(23);
+	bool topmiddle = new DigitalInput(24);
+	bool topgarbage = new DigitalInput(25);
 //	bool homebottom;
 //	bool homemiddle;
 //	bool topbottom;
@@ -51,6 +52,8 @@ class Lifter: public Subsystem
 	bool lowergarbage;
 	bool liftall;
 	bool lowerall;
+	bool off;
+
 
 
 private:
@@ -58,7 +61,7 @@ private:
 	// for methods that implement subsystem capabilities
 public:
 	Lifter();
-	void lift(Joystick* stick,Joystick* padone);
+	void lift(Joystick* stick,Joystick* padone,Joystick* secondstick);
 };
 #endif // SRC_SUBSYSTEMS_LIFTER_H_
 

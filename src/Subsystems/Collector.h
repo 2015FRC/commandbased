@@ -18,52 +18,41 @@ class Collector : public Subsystem
 	    Relay Leftroller;
 	    Talon arms;
 	    int start;
-	    double potval;
-	    AnalogInput ArmAngleSensor;
-
-///////////////////////////
 		int	RUNNING;
-
-//////////////////////arms
-		int fullyopen;
-		int fullyclosed;
-		int partiallyopen;
-		int centered;
-		int partalyclsoed;
-		int buttonpress;
-
-
-		double unmapedpotposition;
-		double potpositionoffset;
-		double mappedpotposition;
-		double potposition;
-		double maxposition;///////////voltage we mesure form the open and close(difference)
-		double armspower;
-
-
-		//////////////////buttons on joystick and pad
-		bool partiallyopenbutton;
-		bool centeredbutton;
-		bool partiallyclosedbutton;
-
+		int runwheels;
 		bool outmovebutton;
 		bool inmovebutton;
-
-		bool outerbutton;
-		bool middlebutton;
-		bool innerbutton;
-		int runwheels;
-
 		bool reversewheel;
 		bool clockwise;
 		bool counterclockwise;
 		bool off;
-		double rawpotposition;
-		double potpositionoffest;
-
-		double partalyopenlocation;
-		double centeredlocation;
-		double partalyclosedlocation;
+		double armspower;
+//double potval;
+// AnalogInput ArmAngleSensor;
+//		int fullyopen;
+//		int fullyclosed;
+//		int partiallyopen;
+//		int centered;
+//		int partalyclsoed;
+//		int buttonpress;
+//		double unmapedpotposition;
+//		double potpositionoffset;
+//		double mappedpotposition;
+//		double potposition;
+//		double maxposition;///////////voltage we mesure form the open and close(difference)
+//////////////////buttons on joystick and pad
+//		bool partiallyopenbutton;
+//		bool centeredbutton;
+//		bool partiallyclosedbutton;
+//		bool outerbutton;
+//		bool middlebutton;
+//		bool innerbutton;
+//		double rawpotposition;
+//		double potpositionoffest;
+//
+//		double partalyopenlocation;
+//		double centeredlocation;
+//		double partalyclosedlocation;
 
 
 private:
