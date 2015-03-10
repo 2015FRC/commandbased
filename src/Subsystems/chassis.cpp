@@ -23,8 +23,13 @@ autostate(Initial),
 x(0.0),
 y(0.0),
 z(0.0),
+xo(0.0),
+yo(0.0),
+zo(0.0),
 rawpower(0.0),
 power(0.0),
+rawpowero(0.0),
+powero(0.0),
 FR(0.0),
 RR(0.0),
 FL(0.0),
@@ -51,7 +56,9 @@ void Chassis::update(Joystick* stick,Joystick* padone,Joystick* secondstick)
 	 x = stick->GetX();
 	 y = stick->GetY();
 	 z = stick->GetZ();
-
+//	 xo = secondstick->GetX();
+//	 yo = secondstick->GetY();
+//	 zo = secondstick->GetZ();
 //	 x = .25;
 //	 y = 0;
 //	 z = 0;
