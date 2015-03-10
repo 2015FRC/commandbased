@@ -27,13 +27,6 @@ class Lifter: public Subsystem
 	bool homegarbage = new DigitalInput(23);
 	bool topmiddle = new DigitalInput(24);
 	bool topgarbage = new DigitalInput(25);
-//	bool homebottom;
-//	bool homemiddle;
-//	bool topbottom;
-//	bool homegarbage;
-//	bool topmiddle ;
-//	bool topgarbage;
-
 
 //	DigitalInput homebottom;
 //	DigitalInput homemiddle;

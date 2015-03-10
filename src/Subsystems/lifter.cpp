@@ -41,9 +41,6 @@ void Lifter::lift(Joystick* stick,Joystick* padone,Joystick * secondstick)
 //bool up = stick->GetRawButton(7);
 //bool down = stick->GetRawButton(8);
 //bool alldown = stick->GetRawButton(9);
-
-
-
 //	 liftbottom = padone->GetRawButton(1);
 //	 lowerbottom = padone ->GetRawButton(2);
 //	 liftmiddle = padone->GetRawButton(3);
@@ -59,25 +56,12 @@ void Lifter::lift(Joystick* stick,Joystick* padone,Joystick * secondstick)
 	 liftall = secondstick->GetRawButton(12);
 	 lowerall = secondstick->GetRawButton(11);
 	 off = secondstick->GetRawButton(10);
-
-
-//	liftbottom = secondstick->GetRawButton(8);
-//	 lowerbottom = secondstick ->GetRawButton(7);
-//	 liftmiddle = secondstick->GetRawButton(10);
-//	 lowermiddle = secondstick->GetRawButton(9);
-//	 liftgarbage = secondstick->GetRawButton(12);
-//	 lowergarbage = secondstick->GetRawButton(11);
-// liftall = secondstick->GetRawButton(5);
-// lowerall = secondstick->GetRawButton(3);
-
-
-// off = secondstick->GetRawButton(10);
-SmartDashboard::PutBoolean("homegarbage",homegarbage);
-SmartDashboard::PutBoolean("homemiddle",homemiddle);
-SmartDashboard::PutBoolean("homebottom",homebottom);
-SmartDashboard::PutBoolean("topgarbage",topgarbage);
-SmartDashboard::PutBoolean("topmiddle",topmiddle);
-SmartDashboard::PutBoolean("topbottom",topbottom);
+//SmartDashboard::PutBoolean("homegarbage",homegarbage);
+//SmartDashboard::PutBoolean("homemiddle",homemiddle);
+//SmartDashboard::PutBoolean("homebottom",homebottom);
+//SmartDashboard::PutBoolean("topgarbage",topgarbage);
+//SmartDashboard::PutBoolean("topmiddle",topmiddle);
+//SmartDashboard::PutBoolean("topbottom",topbottom);
 
 if(liftbottom == 1){
 	allbuttons = 0;

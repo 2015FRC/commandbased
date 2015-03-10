@@ -15,11 +15,6 @@ Collector::Collector():
 	arms(4),
 	start(0),
 	RUNNING(0),
-//	partiallyopenbutton(0),
-//	centeredbutton(0),
-//	partiallyclosedbutton(0),
-//	middlebutton(0),
-//	innerbutton(0),
 	runwheels(0),
 	outmovebutton(0),
 	inmovebutton(0),
@@ -46,61 +41,8 @@ void Collector::collect(Joystick* stick,Joystick* padone,Joystick* secondstick)
 	Relay::Value reverse = (Relay::Value::kReverse);
 
 	runwheels = secondstick->GetPOV();
-//	runwheels = secondstick->GetRawButton(5) ;
-//	reversewheel = secondstick->GetRawButton(3);
-//	clockwise = secondstick->GetRawButton(6) ;
-//	counterclockwise = secondstick->GetRawButton(4);
 	off = secondstick->GetRawButton(2);
 
-
-//	switch(runwheels){
-//	case 0 :
-//		RUNNING
-//		break;
-//	case 90 :
-//
-//		break;
-//	case 180:
-//
-//		break;
-//	case 270 :
-//
-//		break;
-//	case -1:
-//
-//		break;
-//	default:
-//
-//
-//	}
-
-
-// if(runwheels == 1){
-//	 RUNNING = 5;
-//	 buttonpress += 1;
-// }
-//
-// if(reversewheel == 1){
-//	 RUNNING = 3;
-//	 buttonpress += 1;
-// }
-// if(clockwise == 1){
-//	 RUNNING = 6;
-//	 buttonpress += 1;
-// }
-//
-// if(counterclockwise == 1){
-//	 RUNNING = 4;
-//	 buttonpress += 1;
-// }
-// if(off==1){
-//	 RUNNING = 0;
-//	 buttonpress += 1;
-// }
-//
-//if(buttonpress > 1){
-//	RUNNING = 0;
-//}
 
 
 //RUNNING
@@ -141,18 +83,8 @@ case 180 :
 	 Leftroller.Set(Relay::Value::kOff);
 	 }
 	}
-//buttonpress = 0;
-//SmartDashboard::GetData(RUNNING);
 
 
-
-
-//partiallyopenbutton = padone->GetRawButton(9);
-//centeredbutton = padone->GetRawButton(10);
-//partiallyclosedbutton = padone->GetRawButton(11);
-
-//outmovebutton = padone->GetRawButton(12);
-//inmovebutton = padone->GetRawButton(13);
 outmovebutton = secondstick->GetRawButton(7);
 inmovebutton = secondstick->GetRawButton(9);
 //rawpotposition = ArmAngleSensor.GetAverageVoltage();
@@ -213,14 +145,10 @@ inmovebutton = secondstick->GetRawButton(9);
 //}else{arms.Set(0);}
 
 
-if(outmovebutton == 1
-	//	&& (partiallyclosedbutton+centeredbutton+partiallyopenbutton)< 1
-		){
+if(outmovebutton == 1){
 	arms.Set(armspower);
 
-}else if(inmovebutton == 1
-	//	&& (partiallyclosedbutton+centeredbutton+partiallyopenbutton)< 1
-		){
+}else if(inmovebutton == 1){
 	arms.Set(-armspower);
 }
 else{arms.Set(0);}

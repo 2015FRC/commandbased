@@ -27,13 +27,8 @@ class Chassis: public Subsystem
 	float x;
 	float y;
 	float z;
-	float xo;
-	float yo;
-	float zo;
 	float rawpower;
 	float power;
-	float rawpowero;
-	float powero;
 	float FR;
 	float RR;
 	float FL;
